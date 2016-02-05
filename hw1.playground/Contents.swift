@@ -22,33 +22,33 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [Not necessarily because self.wordA and self.wordB will always assign the variables passed in regardless of what type they are, but var wordA and var wordB will only be assigned if the inputs are strings.]
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(words: [String]) -> Bool {
+    class func arePalindromes(words: [String]) -> Bool {
         let reversedWords = words.map() {String($0.characters.reverse())}
-        var numElements = words.count
-        
-        for let i = 0; i < numElements; i++ {
+        let numElements = words.count
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [The compiler dislikes the for loop because i is a var and not a let because i does not remain constant. The function also had to return true at the end because it returns a type boolean and already checked the false case. Lastly, class had to be added before func to declare the function public. ]
 
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
-        var lenA = self.wordA.characters.count
-        var lenB = self.wordB.characters.count
+    func isAnagram() -> Bool {
+        var countLetters = [Character : Int]() //Line X
+        let lenA = self.wordA.characters.count
+        let lenB = self.wordB.characters.count
         
         if lenA != lenB {
             return false
@@ -81,7 +81,7 @@ class Words {
             }
         }
         
-        return nil
+        return true
     }
 //: ### What is the problem with declaring **countLetters** as we do in **Line X**,
 //: ### and then using it in **Line Y**? Fix it (by only changing **Line X**).
@@ -89,7 +89,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: [The problem with declaing countLetters as we do in line X is that it was never initialized and also never assigned. Thus when we used it line Y, it couldnt be accessed because it wasn't initialized. The function also needed to return true in the end because it used to return nil, but that isn't right because it is supposed to return a type boolean.]
     
     
 }
